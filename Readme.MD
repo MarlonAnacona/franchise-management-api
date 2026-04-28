@@ -37,6 +37,8 @@ El código sigue los principios de **Arquitectura Hexagonal (Clean Architecture)
     ```bash
     docker-compose up -d
     ```
+    En caso de que falle reintentar una vez mas, es posible esto por problemas de caché.
+
 
 3.  **Acceso:**
     La API estará disponible en `http://localhost:8082/app/v1`.
@@ -44,6 +46,25 @@ El código sigue los principios de **Arquitectura Hexagonal (Clean Architecture)
 ---
 
 ##  Documentación de la API (Endpoints)
+
+##  Pruebas con Postman
+
+Se incluye el archivo `postman/franchise-management.postman_collection.json` en la raíz del proyecto para facilitar las pruebas de integración. además de los ambientes respectivos
+
+
+1.  Abre Postman e importa la colección.
+2.  Configura la variable `URL_BASE` (ej: `http://localhost:8080`).
+3.  Utiliza los endpoints preconfigurados para validar el flujo completo.
+
+La API fue desplegada en render y en el postman collection se dejan las respectivas colecciones para cada caso
+
+` URL_BASE = localhost
+`
+
+` URL_AWS = URL del ALB en AWS`
+
+` URL_RENDER = URL del servicio en render
+`
 
 
 ### 1. Franquicias (`/v1/franchise`)
@@ -253,13 +274,6 @@ Respuesta (Response):
     "name": "Hamburguesa Especial"
 }
 ```
-##  Pruebas con Postman
-
-Se incluye el archivo `franchise-management.postman_collection.json` en la raíz del proyecto para facilitar las pruebas de integración.
-
-1.  Abre Postman e importa la colección.
-2.  Configura la variable `URL_BASE` (ej: `http://localhost:8080`).
-3.  Utiliza los endpoints preconfigurados para validar el flujo completo.
 
 ---
 
@@ -450,3 +464,5 @@ HealthCheck → incluir context-path (/app)
 #  Resultado
 
 La API queda disponible públicamente a través del Application Load Balancer.
+
+

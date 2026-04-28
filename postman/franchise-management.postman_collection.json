@@ -7,346 +7,1045 @@
   },
   "item": [
     {
-      "name": "Create-Franchise",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
+      "name": "URL_BASE",
+      "item": [
+        {
+          "name": "Create-Franchise",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"KFC\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/franchise",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise"
+              ]
             }
-          ]
+          },
+          "response": []
         },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\":\"KFC\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "GetMaxProductStock",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/franchise/1/branches/top",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise",
+                "1",
+                "branches",
+                "top"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/franchise",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "franchise"
-          ]
+        {
+          "name": "updateNameFranchise",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Mc Donald´s\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/franchise/2",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-Branch",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"name\":\"bochalema\",\r\n        \"franchiseId\":1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/branch",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update-Branch-Name",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/branch/",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteProduct",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/branch/2/products/2",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch",
+                "2",
+                "products",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"papas\",\r\n\r\n      \"stock\":60,\r\n\r\n     \"branchId\":4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/product",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStock",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"stock\":45\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/product/3/stock",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product",
+                "3",
+                "stock"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateNameProduct",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
+            },
+            "url": {
+              "raw": "{{URL_BASE}}/app/v1/product//name",
+              "host": [
+                "{{URL_BASE}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product",
+                "",
+                "name"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
-      "name": "GetMaxProductStock",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
+      "name": "URL_AWS",
+      "item": [
+        {
+          "name": "Create-Franchise",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"KFC\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/franchise",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise"
+              ]
             }
-          ]
+          },
+          "response": []
         },
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "GetMaxProductStock",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/franchise/1/branches/top",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise",
+                "1",
+                "branches",
+                "top"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/franchise/2/branches/top",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "franchise",
-            "2",
-            "branches",
-            "top"
-          ]
+        {
+          "name": "updateNameFranchise",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Mc Donald´s\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/franchise/2",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-Branch",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"name\":\"bochalema\",\r\n        \"franchiseId\":1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/branch",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update-Branch-Name",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/branch/",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteProduct",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/branch/2/products/2",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch",
+                "2",
+                "products",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"papas\",\r\n\r\n      \"stock\":60,\r\n\r\n     \"branchId\":4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/product",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStock",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"stock\":45\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/product/3/stock",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product",
+                "3",
+                "stock"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateNameProduct",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
+            },
+            "url": {
+              "raw": "{{URL_AWS}}/app/v1/product//name",
+              "host": [
+                "{{URL_AWS}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product",
+                "",
+                "name"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
-      "name": "updateNameFranchise",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
+      "name": "URL_RENDER",
+      "item": [
+        {
+          "name": "Create-Franchise",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"KFC\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/franchise",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise"
+              ]
             }
-          ]
+          },
+          "response": []
         },
-        "method": "PATCH",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\":\"Mc Donald´s\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
+        {
+          "name": "GetMaxProductStock",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/franchise/1/branches/top",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise",
+                "1",
+                "branches",
+                "top"
+              ]
             }
-          }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/franchise/2",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "franchise",
-            "2"
-          ]
+        {
+          "name": "updateNameFranchise",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Mc Donald´s\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/franchise/2",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "franchise",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-Branch",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"name\":\"bochalema\",\r\n        \"franchiseId\":1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/branch",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update-Branch-Name",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/branch/",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteProduct",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/branch/2/products/2",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "branch",
+                "2",
+                "products",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create-Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"papas\",\r\n\r\n      \"stock\":60,\r\n\r\n     \"branchId\":4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/product",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateStock",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"stock\":45\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/product/3/stock",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product",
+                "3",
+                "stock"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateNameProduct",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
+            },
+            "url": {
+              "raw": "{{URL_RENDER}}/app/v1/product//name",
+              "host": [
+                "{{URL_RENDER}}"
+              ],
+              "path": [
+                "app",
+                "v1",
+                "product",
+                "",
+                "name"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
-    },
-    {
-      "name": "Create-Branch",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n        \"name\":\"bochalema\",\r\n        \"franchiseId\":2\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/branch",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "branch"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Update-Branch-Name",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "PATCH",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
-        },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/branch/",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "branch",
-            ""
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "deleteProduct",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "DELETE",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/branch/2/products/2",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "branch",
-            "2",
-            "products",
-            "2"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Create-Product",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"name\":\"papas\",\r\n\r\n      \"stock\":60,\r\n\r\n     \"branchId\":4\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/product",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "product"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "UpdateStock",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "PATCH",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n  \"stock\":45\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/product/3/stock",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "product",
-            "3",
-            "stock"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "UpdateNameProduct",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJsb24uYW5hY29uYUBjb3JyZW91bml2YWxsZS5lZHUuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzc0NjMxNjM0LCJleHAiOjE3NzQ3MTgwMzR9.xImDZnHbIwl8bOIZ538joiIeZBID5HSfHXTLtCLNc-Q",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "PATCH",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"fundId\":\"69c66dc5b20041cb8f29d613\",\r\n    \"amount\":\"250000\"\r\n}"
-        },
-        "url": {
-          "raw": "{{URL_BASE}}/app/v1/product//name",
-          "host": [
-            "{{URL_BASE}}"
-          ],
-          "path": [
-            "app",
-            "v1",
-            "product",
-            "",
-            "name"
-          ]
-        }
-      },
-      "response": []
+      ]
     }
   ]
 }
