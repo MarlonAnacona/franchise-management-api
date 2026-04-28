@@ -27,4 +27,12 @@ public interface SpringFranchiseRepository  extends JpaRepository<Franchise,Long
         )
     """)
     List<TopProductDTO> findTopProductsByFranchise(Long franchiseId);
+
+    @Query("""
+            SELECT f FROM Franchise f
+            JOIN FETCH f.branches b
+            JOIN FETCH b.products
+            WHERE f.id = :franchiseId
+            """)
+    Franchise findFullData(Long franchiseId);
 }

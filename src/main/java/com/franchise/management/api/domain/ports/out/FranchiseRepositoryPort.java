@@ -15,4 +15,7 @@ public interface FranchiseRepositoryPort {
     Franchise save(Franchise franchise);
 
     List<TopProductDTO> findProductTop(Long id);
+
+    Boolean existsById(Long id);
+
 }

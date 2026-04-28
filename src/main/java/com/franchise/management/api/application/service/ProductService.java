@@ -5,6 +5,7 @@ import com.franchise.management.api.application.dto.RegisterProductDTO;
 import com.franchise.management.api.application.dto.UpdateProductNameDTO;
 import com.franchise.management.api.application.dto.UpdateStockDTO;
 import com.franchise.management.api.domain.constants.ErrorMessages;
+import com.franchise.management.api.domain.exception.BusinessException;
 import com.franchise.management.api.domain.exception.NotFoundException;
 import com.franchise.management.api.application.ports.in.ProductUseCase;
 import com.franchise.management.api.domain.model.Branch;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductService implements ProductUseCase {
+
     private final ProductRepositoryPort repositoryPort;
 
     private final BranchRepositoryPort repositoryPortBranch;
@@ -43,7 +45,7 @@ public class ProductService implements ProductUseCase {
 
         Product product = findProduct(id);
         if (updateStockDTO.getStock() < 0) {
-            throw new IllegalArgumentException("Stock cannot be negative");
+            throw new BusinessException(ErrorMessages.STOCK_CANNOT_BE_NEGATIVE);
         }
         product.setStock(updateStockDTO.getStock());
 
@@ -54,7 +56,7 @@ public class ProductService implements ProductUseCase {
     public ProductDTO updateName(Long id, UpdateProductNameDTO updateProductNameDTO) {
         Product product = findProduct(id);
         if (updateProductNameDTO.getName() == null || updateProductNameDTO.getName().isBlank()) {
-            throw new IllegalArgumentException("Name cannot be empty");
+            throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);
         }
 
         product.setName(updateProductNameDTO.getName());

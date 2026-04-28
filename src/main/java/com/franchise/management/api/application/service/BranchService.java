@@ -3,6 +3,7 @@ package com.franchise.management.api.application.service;
 import com.franchise.management.api.application.dto.RegisterBranchDTO;
 import com.franchise.management.api.application.dto.UpdateBranchNameDTO;
 import com.franchise.management.api.domain.constants.ErrorMessages;
+import com.franchise.management.api.domain.exception.BusinessException;
 import com.franchise.management.api.domain.exception.NotFoundException;
 import com.franchise.management.api.application.ports.in.BranchUseCase;
 import com.franchise.management.api.domain.model.Branch;
@@ -57,7 +58,7 @@ public class BranchService implements BranchUseCase {
                 .orElseThrow(() -> new NotFoundException(ErrorMessages.PRODUCT_NOT_FOUND));
 
         if (!product.getBranch().getId().equals(idBranch)) {
-            throw new RuntimeException("Product does not belong to this branch");
+            throw new BusinessException(ErrorMessages.PRODUCT_DOES_NOT_BELONG_TO_THIS_BRANCH);
         }
          productRepositoryPort.delete(idBranch,idProduct);
     }
@@ -66,7 +67,9 @@ public class BranchService implements BranchUseCase {
     public UpdateBranchNameDTO update(Long id, UpdateBranchNameDTO updateBranchNameDTO) {
         Branch branch= repositoryPort.findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorMessages.BRANCH_NOT_FOUND));
-
+        if (updateBranchNameDTO.getName() == null || updateBranchNameDTO.getName().isBlank()) {
+            throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);
+        }
         branch.setName(updateBranchNameDTO.getName());
 
         return toUpdateDTO(repositoryPort.save(branch));

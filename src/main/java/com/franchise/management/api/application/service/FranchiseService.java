@@ -8,11 +8,14 @@ import com.franchise.management.api.domain.constants.ErrorMessages;
 import com.franchise.management.api.domain.exception.NotFoundException;
 import com.franchise.management.api.application.ports.in.FranchiseUseCase;
 import com.franchise.management.api.domain.model.Franchise;
+import com.franchise.management.api.domain.model.Product;
 import com.franchise.management.api.domain.ports.out.FranchiseRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class FranchiseService implements FranchiseUseCase {
@@ -24,22 +27,13 @@ public class FranchiseService implements FranchiseUseCase {
         this.repositoryPort = repositoryPort;
     }
 
-    @Override
-    public List<FranchiseDTO> findAll() {
-        return null;
-    }
 
-    @Override
-    public FranchiseDTO findById(Long id) {
-
-        return null;
-    }
 
     @Override
     public RegisterFranchiseDTO save(RegisterFranchiseDTO dto) {
 
         if (dto.getName() == null || dto.getName().isBlank()) {
-            throw new IllegalArgumentException("Name cannot be empty");
+            throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);
         }
 
         Franchise franchise = Franchise.builder()
@@ -53,7 +47,8 @@ public class FranchiseService implements FranchiseUseCase {
     public List<TopProductDTO> findProductTop(Long franchiseId) {
 
 
-            /*  Se hace uso de streams, pero por perfomance se opta mejor por JPQL, evitando así problemas de carga con demasiados datos
+           /* Se hace uso de streams, pero por perfomance se opta mejor por JPQL, evitando así problemas de carga con demasiados datos
+            Este stream tiene problema de N+1, por ende no se opta , sin embargo se deja para explicar en la prueba el porque no uso de streams
 
                     Franchise franchise = repositoryPort.findById(franchiseId)
                     .orElseThrow(()-> new RuntimeException("Franchise not found"));
@@ -67,18 +62,26 @@ public class FranchiseService implements FranchiseUseCase {
                                 .orElse(null);
                         if (topProduct == null) return null;
 
-                        return TopProductDTO.builder().branchName(branch.getName()).productName(branch.getName()).stock(topProduct.getStock()).build();
+                        return TopProductDTO.builder().branchName(branch.getName()).productName(topProduct.getName()).stock(topProduct.getStock()).build();
                     })
                     .filter(Objects::nonNull)
                     .toList();
-        */
-        return  repositoryPort.findProductTop(franchiseId);
+*/
+
+        if (!repositoryPort.existsById(franchiseId)) {
+            throw new NotFoundException(ErrorMessages.FRANCHISE_NOT_FOUND);
+
+        }
+            return  repositoryPort.findProductTop(franchiseId);
 
     }
 
     @Override
     public RegisterFranchiseDTO update(Long id, UpdateFranchiseNameDTO updateFranchiseNameDTO) {
         Franchise franchise= repositoryPort.findById(id).orElseThrow(()->new NotFoundException(ErrorMessages.FRANCHISE_NOT_FOUND));
+        if (updateFranchiseNameDTO.getName() == null || updateFranchiseNameDTO.getName().isBlank()) {
+            throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);
+        }
         franchise.setName(updateFranchiseNameDTO.getName());
 
         return toDTO(repositoryPort.save(franchise));

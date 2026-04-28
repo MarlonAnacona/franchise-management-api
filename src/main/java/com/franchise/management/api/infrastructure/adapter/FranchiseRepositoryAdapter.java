@@ -32,5 +32,10 @@ public class FranchiseRepositoryAdapter implements FranchiseRepositoryPort {
         return repository.findTopProductsByFranchise(id);
     }
 
+    @Override
+    public Boolean existsById(Long id) {
+        return repository.existsById(id);
+    }
+
 
 }

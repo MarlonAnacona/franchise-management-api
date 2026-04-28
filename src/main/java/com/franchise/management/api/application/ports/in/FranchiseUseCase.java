@@ -8,9 +8,8 @@ import com.franchise.management.api.application.dto.UpdateFranchiseNameDTO;
 import java.util.List;
 
 public interface FranchiseUseCase {
-    List<FranchiseDTO> findAll();
 
-    FranchiseDTO findById(Long id);
+
 
     RegisterFranchiseDTO save(RegisterFranchiseDTO dto);
 

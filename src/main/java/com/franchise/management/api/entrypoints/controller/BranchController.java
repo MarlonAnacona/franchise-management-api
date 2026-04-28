@@ -33,8 +33,8 @@ public class BranchController {
             @PathVariable Long branchId,
             @PathVariable Long productId) {
 
-        branchUseCase.delete(branchId,productId);
-        return (ResponseEntity<Void>) ResponseEntity.ok();
+       branchUseCase.delete(branchId,productId);
+        return ResponseEntity.accepted().build();
     }
 
     @PatchMapping("/{id}")
