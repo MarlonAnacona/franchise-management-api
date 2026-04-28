@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FranchiseService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">franchise-management-api</a> &gt; <a href="index.source.html" class="el_package">com.franchise.management.api.application.service</a> &gt; <span class="el_source">FranchiseService.java</span></div><h1>FranchiseService.java</h1><pre class="source lang-java linenums">package com.franchise.management.api.application.service;
+
+import com.franchise.management.api.application.dto.*;
+import com.franchise.management.api.domain.constants.ErrorMessages;
+import com.franchise.management.api.domain.exception.NotFoundException;
+import com.franchise.management.api.application.ports.in.FranchiseUseCase;
+import com.franchise.management.api.domain.model.Franchise;
+import com.franchise.management.api.domain.model.Product;
+import com.franchise.management.api.domain.ports.out.FranchiseRepositoryPort;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+
+@Service
+public class FranchiseService implements FranchiseUseCase {
+
+    private final FranchiseRepositoryPort repositoryPort;
+
+    @Autowired
+<span class="fc" id="L23">    public FranchiseService(FranchiseRepositoryPort repositoryPort) {</span>
+<span class="fc" id="L24">        this.repositoryPort = repositoryPort;</span>
+<span class="fc" id="L25">    }</span>
+
+
+
+    @Override
+    public ResponseFranchiseDTO save(RegisterFranchiseDTO dto) {
+
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">        if (dto.getName() == null || dto.getName().isBlank()) {</span>
+<span class="fc" id="L33">            throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);</span>
+        }
+
+<span class="fc" id="L36">        Franchise franchise = Franchise.builder()</span>
+<span class="fc" id="L37">                .name(dto.getName())</span>
+<span class="fc" id="L38">                .build();</span>
+
+<span class="fc" id="L40">        return toDTO(repositoryPort.save(franchise));</span>
+    }
+
+    @Override
+    public List&lt;TopProductDTO&gt; findProductTop(Long franchiseId) {
+
+
+           /* Se hace uso de streams, pero por perfomance se opta mejor por JPQL, evitando asÃ­ problemas de carga con demasiados datos
+            Este stream tiene problema de N+1, por ende no se opta , sin embargo se deja para explicar en la prueba el porque no uso de streams
+
+                    Franchise franchise = repositoryPort.findById(franchiseId)
+                    .orElseThrow(()-&gt; new RuntimeException(&quot;Franchise not found&quot;));
+
+            return franchise.getBranches()
+                    .stream()
+                    .map(branch -&gt; {
+                        Product topProduct = branch.getProducts()
+                                .stream()
+                                .max(Comparator.comparing(Product::getStock))
+                                .orElse(null);
+                        if (topProduct == null) return null;
+
+                        return TopProductDTO.builder().branchName(branch.getName()).productName(topProduct.getName()).stock(topProduct.getStock()).build();
+                    })
+                    .filter(Objects::nonNull)
+                    .toList();
+*/
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (!repositoryPort.existsById(franchiseId)) {</span>
+<span class="fc" id="L69">            throw new NotFoundException(ErrorMessages.FRANCHISE_NOT_FOUND);</span>
+
+        }
+<span class="fc" id="L72">            return  repositoryPort.findProductTop(franchiseId);</span>
+
+    }
+
+    @Override
+    public RegisterFranchiseDTO update(Long id, UpdateFranchiseNameDTO updateFranchiseNameDTO) {
+<span class="fc" id="L78">        Franchise franchise= repositoryPort.findById(id).orElseThrow(()-&gt;new NotFoundException(ErrorMessages.FRANCHISE_NOT_FOUND));</span>
+<span class="pc bpc" id="L79" title="1 of 4 branches missed.">        if (updateFranchiseNameDTO.getName() == null || updateFranchiseNameDTO.getName().isBlank()) {</span>
+<span class="fc" id="L80">            throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);</span>
+        }
+<span class="fc" id="L82">        franchise.setName(updateFranchiseNameDTO.getName());</span>
+
+<span class="fc" id="L84">        return toDTOUpdate(repositoryPort.save(franchise));</span>
+    }
+
+
+    private RegisterFranchiseDTO toDTOUpdate(Franchise franchise) {
+
+<span class="fc" id="L90">        return RegisterFranchiseDTO.builder().name(franchise.getName()).build();</span>
+    }
+
+    public  ResponseFranchiseDTO toDTO(Franchise franchise) {
+
+<span class="fc" id="L95">        return ResponseFranchiseDTO.builder().name(franchise.getName()).franchiseId(franchise.getId()).build();</span>
+    }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

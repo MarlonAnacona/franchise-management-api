@@ -1,9 +1,6 @@
 package com.franchise.management.api.application.service;
 
-import com.franchise.management.api.application.dto.FranchiseDTO;
-import com.franchise.management.api.application.dto.RegisterFranchiseDTO;
-import com.franchise.management.api.application.dto.TopProductDTO;
-import com.franchise.management.api.application.dto.UpdateFranchiseNameDTO;
+import com.franchise.management.api.application.dto.*;
 import com.franchise.management.api.domain.constants.ErrorMessages;
 import com.franchise.management.api.domain.exception.NotFoundException;
 import com.franchise.management.api.application.ports.in.FranchiseUseCase;
@@ -30,7 +27,7 @@ public class FranchiseService implements FranchiseUseCase {
 
 
     @Override
-    public RegisterFranchiseDTO save(RegisterFranchiseDTO dto) {
+    public ResponseFranchiseDTO save(RegisterFranchiseDTO dto) {
 
         if (dto.getName() == null || dto.getName().isBlank()) {
             throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);
@@ -84,13 +81,18 @@ public class FranchiseService implements FranchiseUseCase {
         }
         franchise.setName(updateFranchiseNameDTO.getName());
 
-        return toDTO(repositoryPort.save(franchise));
+        return toDTOUpdate(repositoryPort.save(franchise));
     }
 
 
-    private RegisterFranchiseDTO toDTO(Franchise franchise) {
+    private RegisterFranchiseDTO toDTOUpdate(Franchise franchise) {
 
         return RegisterFranchiseDTO.builder().name(franchise.getName()).build();
+    }
+
+    public  ResponseFranchiseDTO toDTO(Franchise franchise) {
+
+        return ResponseFranchiseDTO.builder().name(franchise.getName()).franchiseId(franchise.getId()).build();
     }
 
 

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BranchService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">franchise-management-api</a> &gt; <a href="index.source.html" class="el_package">com.franchise.management.api.application.service</a> &gt; <span class="el_source">BranchService.java</span></div><h1>BranchService.java</h1><pre class="source lang-java linenums">package com.franchise.management.api.application.service;
+
+import com.franchise.management.api.application.dto.BranchDTO;
+import com.franchise.management.api.application.dto.RegisterBranchDTO;
+import com.franchise.management.api.application.dto.ResponseBranchDTO;
+import com.franchise.management.api.application.dto.UpdateBranchNameDTO;
+import com.franchise.management.api.domain.constants.ErrorMessages;
+import com.franchise.management.api.domain.exception.BusinessException;
+import com.franchise.management.api.domain.exception.NotFoundException;
+import com.franchise.management.api.application.ports.in.BranchUseCase;
+import com.franchise.management.api.domain.model.Branch;
+import com.franchise.management.api.domain.model.Franchise;
+import com.franchise.management.api.domain.model.Product;
+import com.franchise.management.api.domain.ports.out.BranchRepositoryPort;
+import com.franchise.management.api.domain.ports.out.FranchiseRepositoryPort;
+import com.franchise.management.api.domain.ports.out.ProductRepositoryPort;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class BranchService implements BranchUseCase {
+
+    private BranchRepositoryPort repositoryPort;
+
+    private FranchiseRepositoryPort franchiseRepositoryPort;
+
+    private ProductRepositoryPort productRepositoryPort;
+
+    @Autowired
+<span class="fc" id="L30">    public BranchService(BranchRepositoryPort repositoryPort, FranchiseRepositoryPort franchiseRepositoryPort, ProductRepositoryPort productRepositoryPort) {</span>
+<span class="fc" id="L31">        this.repositoryPort = repositoryPort;</span>
+<span class="fc" id="L32">        this.franchiseRepositoryPort = franchiseRepositoryPort;</span>
+<span class="fc" id="L33">        this.productRepositoryPort = productRepositoryPort;</span>
+<span class="fc" id="L34">    }</span>
+
+    @Override
+    public ResponseBranchDTO save(RegisterBranchDTO registerBranchDTO) {
+
+<span class="fc" id="L39">        Franchise franchise = this.franchiseRepositoryPort.findById(registerBranchDTO.getFranchiseId())</span>
+<span class="fc" id="L40">                .orElseThrow(() -&gt; new NotFoundException(ErrorMessages.FRANCHISE_NOT_FOUND));</span>
+
+<span class="fc" id="L42">        Branch branch = Branch.builder()</span>
+<span class="fc" id="L43">                .name(registerBranchDTO.getName())</span>
+<span class="fc" id="L44">                .franchise(franchise)</span>
+<span class="fc" id="L45">                .build();</span>
+
+
+<span class="fc" id="L48">         return toDTO(repositoryPort.save(branch));</span>
+
+
+    }
+
+    @Override
+    public void delete(Long idBranch, Long idProduct) {
+
+<span class="fc" id="L56">        repositoryPort.findById(idBranch)</span>
+<span class="pc" id="L57">                .orElseThrow(() -&gt; new NotFoundException(ErrorMessages.FRANCHISE_NOT_FOUND));</span>
+
+<span class="fc" id="L59">        Product product = productRepositoryPort.findById(idProduct)</span>
+<span class="fc" id="L60">                .orElseThrow(() -&gt; new NotFoundException(ErrorMessages.PRODUCT_NOT_FOUND));</span>
+
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (!product.getBranch().getId().equals(idBranch)) {</span>
+<span class="fc" id="L63">            throw new BusinessException(ErrorMessages.PRODUCT_DOES_NOT_BELONG_TO_THIS_BRANCH);</span>
+        }
+<span class="fc" id="L65">         productRepositoryPort.delete(idBranch,idProduct);</span>
+<span class="fc" id="L66">    }</span>
+
+    @Override
+    public UpdateBranchNameDTO update(Long id, UpdateBranchNameDTO updateBranchNameDTO) {
+<span class="fc" id="L70">        Branch branch= repositoryPort.findById(id)</span>
+<span class="fc" id="L71">                .orElseThrow(() -&gt; new NotFoundException(ErrorMessages.BRANCH_NOT_FOUND));</span>
+<span class="pc bpc" id="L72" title="1 of 4 branches missed.">        if (updateBranchNameDTO.getName() == null || updateBranchNameDTO.getName().isBlank()) {</span>
+<span class="fc" id="L73">            throw new IllegalArgumentException(ErrorMessages.NAME_CANNOT_BE_EMPTY);</span>
+        }
+<span class="fc" id="L75">        branch.setName(updateBranchNameDTO.getName());</span>
+
+<span class="fc" id="L77">        return toUpdateDTO(repositoryPort.save(branch));</span>
+    }
+
+    private ResponseBranchDTO toDTO(Branch branch) {
+
+<span class="fc" id="L82">        return ResponseBranchDTO.builder().name(branch.getName()).franchiseId(branch.getFranchise().getId()).branchId(branch.getId()).build();</span>
+    }
+
+    private UpdateBranchNameDTO toUpdateDTO(Branch branch) {
+
+<span class="fc" id="L87">        return UpdateBranchNameDTO.builder().name(branch.getName()).build();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

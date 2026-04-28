@@ -1,9 +1,6 @@
 package com.franchise.management.api.application.ports.in;
 
-import com.franchise.management.api.application.dto.FranchiseDTO;
-import com.franchise.management.api.application.dto.RegisterFranchiseDTO;
-import com.franchise.management.api.application.dto.TopProductDTO;
-import com.franchise.management.api.application.dto.UpdateFranchiseNameDTO;
+import com.franchise.management.api.application.dto.*;
 
 import java.util.List;
 
@@ -11,7 +8,7 @@ public interface FranchiseUseCase {
 
 
 
-    RegisterFranchiseDTO save(RegisterFranchiseDTO dto);
+    ResponseFranchiseDTO save(RegisterFranchiseDTO dto);
 
     List<TopProductDTO> findProductTop(Long id);
 

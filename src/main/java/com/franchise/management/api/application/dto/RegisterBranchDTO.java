@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class RegisterBranchDTO {
     @NotNull
     private String name;

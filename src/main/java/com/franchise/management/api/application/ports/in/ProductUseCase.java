@@ -1,13 +1,10 @@
 package com.franchise.management.api.application.ports.in;
 
-import com.franchise.management.api.application.dto.ProductDTO;
-import com.franchise.management.api.application.dto.RegisterProductDTO;
-import com.franchise.management.api.application.dto.UpdateProductNameDTO;
-import com.franchise.management.api.application.dto.UpdateStockDTO;
+import com.franchise.management.api.application.dto.*;
 
 public interface ProductUseCase {
 
-    RegisterProductDTO save(RegisterProductDTO registerProductDTO);
+    ResponseProductDTO save(RegisterProductDTO registerProductDTO);
 
     ProductDTO updateStock(Long id, UpdateStockDTO updateStockDTO);
 

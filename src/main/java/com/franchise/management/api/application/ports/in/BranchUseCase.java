@@ -1,13 +1,10 @@
 package com.franchise.management.api.application.ports.in;
 
-import com.franchise.management.api.application.dto.BranchDTO;
-import com.franchise.management.api.application.dto.RegisterBranchDTO;
-import com.franchise.management.api.application.dto.UpdateBranchNameDTO;
-import com.franchise.management.api.application.dto.UpdateStockDTO;
+import com.franchise.management.api.application.dto.*;
 
 public interface BranchUseCase {
 
-    RegisterBranchDTO save(RegisterBranchDTO registerBranchDTO);
+    ResponseBranchDTO save(RegisterBranchDTO registerBranchDTO);
 
     void delete(Long idBranch, Long idProduct);
 

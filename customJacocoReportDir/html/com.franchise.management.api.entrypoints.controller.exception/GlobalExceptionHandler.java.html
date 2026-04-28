@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GlobalExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">franchise-management-api</a> &gt; <a href="index.source.html" class="el_package">com.franchise.management.api.entrypoints.controller.exception</a> &gt; <span class="el_source">GlobalExceptionHandler.java</span></div><h1>GlobalExceptionHandler.java</h1><pre class="source lang-java linenums">package com.franchise.management.api.entrypoints.controller.exception;
+
+import com.franchise.management.api.application.dto.ErrorResponseDTO;
+import com.franchise.management.api.domain.exception.BusinessException;
+import com.franchise.management.api.domain.exception.NotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.time.LocalDateTime;
+
+@RestControllerAdvice
+
+<span class="fc" id="L16">public class GlobalExceptionHandler {</span>
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity&lt;ErrorResponseDTO&gt; handleNotFound(NotFoundException ex) {
+<span class="fc" id="L19">        return ResponseEntity.status(HttpStatus.NOT_FOUND)</span>
+<span class="fc" id="L20">                .body(new ErrorResponseDTO(&quot;NOT_FOUND&quot;, ex.getMessage(),LocalDateTime.now()));</span>
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity&lt;ErrorResponseDTO&gt; handleBadRequest(IllegalArgumentException ex) {
+<span class="nc" id="L25">        return ResponseEntity.status(HttpStatus.BAD_REQUEST)</span>
+<span class="nc" id="L26">                .body(new ErrorResponseDTO(&quot;BAD_REQUEST&quot;, ex.getMessage(),LocalDateTime.now()));</span>
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity&lt;ErrorResponseDTO&gt; handleBusiness(BusinessException ex) {
+<span class="fc" id="L31">        return ResponseEntity.status(HttpStatus.CONFLICT)</span>
+<span class="fc" id="L32">                .body(new ErrorResponseDTO(&quot;CONFLICT&quot;, ex.getMessage(),LocalDateTime.now()));</span>
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;ErrorResponseDTO&gt; handleGeneric(Exception ex) {
+<span class="nc" id="L37">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)</span>
+<span class="nc" id="L38">                .body(new ErrorResponseDTO(&quot;INTERNAL_ERROR&quot;, &quot;Unexpected error&quot;,LocalDateTime.now()));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,6 +1,8 @@
 package com.franchise.management.api.application.service;
 
+import com.franchise.management.api.application.dto.BranchDTO;
 import com.franchise.management.api.application.dto.RegisterBranchDTO;
+import com.franchise.management.api.application.dto.ResponseBranchDTO;
 import com.franchise.management.api.application.dto.UpdateBranchNameDTO;
 import com.franchise.management.api.domain.constants.ErrorMessages;
 import com.franchise.management.api.domain.exception.BusinessException;
@@ -32,7 +34,7 @@ public class BranchService implements BranchUseCase {
     }
 
     @Override
-    public RegisterBranchDTO save(RegisterBranchDTO registerBranchDTO) {
+    public ResponseBranchDTO save(RegisterBranchDTO registerBranchDTO) {
 
         Franchise franchise = this.franchiseRepositoryPort.findById(registerBranchDTO.getFranchiseId())
                 .orElseThrow(() -> new NotFoundException(ErrorMessages.FRANCHISE_NOT_FOUND));
@@ -75,9 +77,9 @@ public class BranchService implements BranchUseCase {
         return toUpdateDTO(repositoryPort.save(branch));
     }
 
-    private RegisterBranchDTO toDTO(Branch branch) {
+    private ResponseBranchDTO toDTO(Branch branch) {
 
-        return RegisterBranchDTO.builder().name(branch.getName()).franchiseId(branch.getFranchise().getId()).build();
+        return ResponseBranchDTO.builder().name(branch.getName()).franchiseId(branch.getFranchise().getId()).branchId(branch.getId()).build();
     }
 
     private UpdateBranchNameDTO toUpdateDTO(Branch branch) {

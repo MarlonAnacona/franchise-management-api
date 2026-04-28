@@ -1,9 +1,6 @@
 package com.franchise.management.api.application.service;
 
-import com.franchise.management.api.application.dto.ProductDTO;
-import com.franchise.management.api.application.dto.RegisterProductDTO;
-import com.franchise.management.api.application.dto.UpdateProductNameDTO;
-import com.franchise.management.api.application.dto.UpdateStockDTO;
+import com.franchise.management.api.application.dto.*;
 import com.franchise.management.api.domain.constants.ErrorMessages;
 import com.franchise.management.api.domain.exception.BusinessException;
 import com.franchise.management.api.domain.exception.NotFoundException;
@@ -29,7 +26,7 @@ public class ProductService implements ProductUseCase {
     }
 
     @Override
-    public RegisterProductDTO save(RegisterProductDTO registerProductDTO) {
+    public ResponseProductDTO save(RegisterProductDTO registerProductDTO) {
 
         Branch branch=repositoryPortBranch.findById(registerProductDTO.getBranchId()).orElseThrow(() -> new NotFoundException(ErrorMessages.BRANCH_NOT_FOUND));
         Product product= Product.builder()
@@ -69,9 +66,13 @@ public class ProductService implements ProductUseCase {
     }
 
 
-    public RegisterProductDTO toDtoProductRegister(Product product){
+    public ResponseProductDTO toDtoProductRegister(Product product){
 
-        return RegisterProductDTO.builder().name(product.getName()).stock(product.getStock()).branchId(product.getBranch().getId()).build();
+        return ResponseProductDTO.builder()
+                .name(product.getName())
+                .stock(product.getStock())
+                .branchId(product.getBranch().getId())
+                .productId(product.getId()).build();
     }
 
     public ProductDTO toDtoProduct(Product product){
