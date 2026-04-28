@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BranchController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">franchise-management-api</a> &gt; <a href="index.source.html" class="el_package">com.franchise.management.api.entrypoints.controller</a> &gt; <span class="el_source">BranchController.java</span></div><h1>BranchController.java</h1><pre class="source lang-java linenums">package com.franchise.management.api.entrypoints.controller;
+
+import com.franchise.management.api.application.dto.RegisterBranchDTO;
+import com.franchise.management.api.application.dto.RegisterFranchiseDTO;
+import com.franchise.management.api.application.dto.UpdateBranchNameDTO;
+import com.franchise.management.api.application.dto.UpdateFranchiseNameDTO;
+import com.franchise.management.api.application.ports.in.BranchUseCase;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping(&quot;/v1/branch&quot;)
+@CrossOrigin(&quot;*&quot;)
+public class BranchController {
+
+    private final BranchUseCase branchUseCase;
+
+    @Autowired
+<span class="fc" id="L20">    public BranchController(BranchUseCase branchUseCase) {</span>
+<span class="fc" id="L21">        this.branchUseCase = branchUseCase;</span>
+<span class="fc" id="L22">    }</span>
+
+    @PostMapping()
+    public ResponseEntity&lt;?&gt; save(@RequestBody RegisterBranchDTO request){
+
+<span class="fc" id="L27">        return ResponseEntity.ok(branchUseCase.save(request));</span>
+    }
+
+
+    @DeleteMapping(&quot;/{branchId}/products/{productId}&quot;)
+    public ResponseEntity&lt;Void&gt; delete(
+            @PathVariable Long branchId,
+            @PathVariable Long productId) {
+
+<span class="fc" id="L36">       branchUseCase.delete(branchId,productId);</span>
+<span class="fc" id="L37">        return ResponseEntity.accepted().build();</span>
+    }
+
+    @PatchMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;?&gt; update(
+            @PathVariable Long id, @RequestBody UpdateBranchNameDTO updateBranchNameDTO) {
+
+
+<span class="fc" id="L45">        return ResponseEntity.ok(branchUseCase.update(id, updateBranchNameDTO));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
