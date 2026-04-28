@@ -1,13 +1,16 @@
-package com.franchise.management.api.models.entitys;
+package com.franchise.management.api.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Entity
+@Builder
 public class Product {
 
     @Id

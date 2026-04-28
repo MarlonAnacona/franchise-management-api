@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "Franchise Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Franchise",
+      "item": [
+        {
+          "name": "Create Franchise",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  "name": "Franchise 1"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/app/v1/franchise",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","franchise"]
+            }
+          }
+        },
+        {
+          "name": "Update Franchise Name",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  "name": "New Franchise Name"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/app/v1/franchise/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","franchise","1"]
+            }
+          }
+        },
+        {
+          "name": "Get Top Products by Franchise",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8081/app/v1/franchise/branches/top?id=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","franchise","branches","top"],
+              "query": [
+                { "key": "id", "value": "1" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Branch",
+      "item": [
+        {
+          "name": "Create Branch",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  "name": "Branch 1",\n  "franchiseId": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/app/v1/branch/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","branch",""]
+            }
+          }
+        },
+        {
+          "name": "Update Branch Name",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  "name": "New Branch Name"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/app/v1/branch/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","branch","1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Product from Branch",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8081/app/v1/branch/1/products/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","branch","1","products","1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  "name": "Product 1",\n  "stock": 10,\n  "branchId": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/app/v1/product/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","product",""]
+            }
+          }
+        },
+        {
+          "name": "Update Product Stock",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  "stock": 50\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/app/v1/product/1/stock",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","product","1","stock"]
+            }
+          }
+        },
+        {
+          "name": "Update Product Name",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  "name": "New Product Name"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/app/v1/product/1/name",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["app","v1","product","1","name"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
